@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>&lt;delaf/&gt;</title>
+        <link href="https://gravatar.com/avatar/231388d13b268230741d50c5157a8888?size=16" rel="shortcut icon" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" />
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+        <link href="app.css" rel="stylesheet" />
+    </head>
+    <body data-ng-app="portafolio">
+        <header class="navbar navbar-fixed-top navbar-default" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Ocultar/mostrar navegación</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">&lt;delaf/&gt;</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#proyectos"><i class="fa fa-file-code-o"></i> Proyectos</a></li>
+                        <li><a href="#capturas"><i class="fa fa-file-image-o"></i> Capturas</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                Más sobre mí <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="http://esteban.delaf.cl/archivos/cv.pdf"><i class="fa fa-file-pdf-o"></i> CV (español)</a></li>
+                                <li><a href="http://esteban.delaf.cl/archivos/resume.pdf"><i class="fa fa-file-pdf-o"></i> Resume (english)</a></li>
+                                <li><a href="https://www.linkedin.com/in/estebandelaf"><i class="fa fa-linkedin"></i> LinkedIn</a></li>
+                                <li><a href="https://stackoverflow.com/cv/delaf"><i class="fa fa-stack-overflow"></i> Stack Overflow Careers</a>
+                            </ul>
+                        </li>
+                        <li><a href="https://github.com/estebandelaf"><i class="fa fa-lg fa-github"></i> GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <div>
+            <header class="jumbotron" id="overview">
+                <div class="container">
+                    <div class="col-sm-3">
+                        <img src="https://gravatar.com/avatar/231388d13b268230741d50c5157a8888?size=150" alt="avatar" class="img-responsive thumbnail" />
+                    </div>
+                    <div class="col-sm-7">
+                        <h1>Portafolio</h1>
+                        <p>Esteban De La Fuente Rubio</p>
+                    </div>
+                </div>
+            </header>
+            <div class="container" >
+                <section id="proyectos" data-ng-controller="Controller_Proyectos">
+                    <h1 class="page-header">Proyectos <small>publicados en GitHub</small></h1>
+                    <p class="text-muted">
+                        <input class="form-control" autofocus="autofocus" style="max-width: 15em; display: inline-block;" data-ng-model="searchText" placeholder="buscar...">
+                        {{(proyectos| filter:searchText).length}} proyectos encontrados
+                    </p>
+                    <div class="list-group">
+                        <div data-ng-repeat="proyecto in proyectos| filter:searchText | orderBy: 'full_name'" href="{{proyecto.html_url}}" class="list-group-item">
+                            <p class="pull-right">
+                                <a href="{{proyecto.html_url}}" title="Ir al proyecto {{proyecto.full_name}} en GitHub"><i class="fa fa-3x fa-github"></i></a>
+                            </p>
+                            <h4 class="list-group-item-heading">
+                                <a href="{{proyecto.html_url}}" title="Ir al proyecto {{proyecto.full_name}} en GitHub">
+                                    {{proyecto.full_name}}
+                                </a>
+                            </h4>
+                            <p class="list-group-item-text text-muted">{{proyecto.description}}</p>
+                            <p class="list-group-item-text text-muted">
+                                <i class="fa fa-file-code-o"></i> {{proyecto.language}}
+                                <i class="fa fa-star"></i> {{proyecto.stargazers_count}}
+                                <i class="fa fa-code-fork"></i> {{proyecto.forks_count}}
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section id="capturas" data-ng-controller="Controller_Capturas">
+                    <h1 class="page-header">Capturas <small>de algunos proyectos</small></h1>
+                    <div class="row">
+                        <div data-ng-repeat="captura in capturas| orderBy: '-date'" class="col-md-3">
+                            <div class="thumbnail">
+                                <a href="img/capturas/{{captura.imag}}" target="_blank">
+                                    <img src="img/capturas/t/{{captura.imag}}" alt="{{captura.name}}" class="img-responsive center" />
+                                </a>
+                                <div class="caption">
+                                    <h3>{{captura.name}}</h3>
+                                    <p>{{captura.desc}}</p>
+                                    <p class="pull-left">{{captura.date}}</p>
+                                    <p class="pull-right"><a href="{{captura.link}}" title="Ir a {{captura.link}}">más &raquo;</a></p>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <footer class="footer" style="margin-top:2em">
+            <div class="container">
+                <div class="text-muted pull-left">
+                    &copy; 2004 - 2016 <a href="http://delaf.cl">Esteban De La Fuente Rubio</a>
+                </div>
+                <div class="text-muted pull-right text-right">
+                    <a href="http://creativecommons.org/licenses/by-sa/3.0/cl" title="Contenido bajo licencia CC BY-SA 3.0">
+                        <img src="http://esteban.delaf.cl/layouts/delaf/img/powered/cc_by-sa.png" alt="cc_by-sa" />
+                    </a>
+                </div>
+            </div>
+        </footer>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.js"></script>
+        <script src="//code.jquery.com/jquery-1.12.2.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="app.js"></script>
+    </body>
+</html>
