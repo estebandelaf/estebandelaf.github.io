@@ -6,7 +6,7 @@
         <link href="https://gravatar.com/avatar/231388d13b268230741d50c5157a8888?size=16" rel="shortcut icon" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" />
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
         <link href="app.css" rel="stylesheet" />
     </head>
     <body data-ng-app="portafolio">
@@ -35,7 +35,6 @@
                                 <li><a href="http://esteban.delaf.cl/archivos/cv.pdf"><i class="fa fa-file-pdf-o"></i> CV (español)</a></li>
                                 <li><a href="http://esteban.delaf.cl/archivos/resume.pdf"><i class="fa fa-file-pdf-o"></i> Resume (english)</a></li>
                                 <li><a href="https://www.linkedin.com/in/estebandelaf"><i class="fa fa-linkedin"></i> LinkedIn</a></li>
-                                <li><a href="https://stackoverflow.com/cv/delaf"><i class="fa fa-stack-overflow"></i> Stack Overflow Careers</a>
                                 <li><a href="https://codetrace.io/users/estebandelaf"><i class="fa fa-file-code-o"></i> CodeTrace</a>
                             </ul>
                         </li>
@@ -58,7 +57,8 @@
             </header>
             <div class="container" >
                 <section id="proyectos" data-ng-controller="Controller_Proyectos">
-                    <h1 class="page-header">Proyectos <small>publicados en GitHub</small></h1>
+                    <h1 class="page-header">Proyectos <small>públicos en GitHub</small></h1>
+                    <p>Los siguientes son proyectos personales y de las organizaciones en GitHub a las que pertenezco. Tanto los que he desarrollado como otros donde sólo soy colaborador o revisor.</p>
                     <p class="text-muted">
                         <input class="form-control" autofocus="autofocus" style="max-width: 15em; display: inline-block;" data-ng-model="searchText" placeholder="buscar...">
                         {{(proyectos| filter:searchText).length}} proyectos encontrados
@@ -83,7 +83,7 @@
                     </div>
                 </section>
                 <section id="capturas" data-ng-controller="Controller_Capturas">
-                    <h1 class="page-header">Capturas <small>de algunos proyectos</small></h1>
+                    <h1 class="page-header">Capturas de pantalla <small>de algunos proyectos</small></h1>
                     <div class="row">
                         <div data-ng-repeat="captura in capturas| orderBy: '-date'" class="col-md-3">
                             <div class="thumbnail">
@@ -106,7 +106,7 @@
         <footer class="footer" style="margin-top:2em">
             <div class="container">
                 <div class="text-muted pull-left">
-                    &copy; 2004 - 2016 <a href="http://delaf.cl">Esteban De La Fuente Rubio</a>
+                    &copy; 2004 - <script>document.write(new Date().getFullYear());</script> <a href="http://delaf.cl">Esteban De La Fuente Rubio</a>
                 </div>
                 <div class="text-muted pull-right text-right">
                     <a href="http://creativecommons.org/licenses/by-sa/3.0/cl" title="Contenido bajo licencia CC BY-SA 3.0">
@@ -115,9 +115,9 @@
                 </div>
             </div>
         </footer>
-        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.js"></script>
-        <script src="//code.jquery.com/jquery-1.12.2.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.2.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script src="app.js"></script>
     </body>
 </html>
